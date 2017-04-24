@@ -4,29 +4,46 @@ File: crypto.py
 ---------------
 Assignment 1: Cryptography
 Course: CS 41
-Name: <YOUR NAME>
-SUNet: <SUNet ID>
+Name: <Yinghao Xu>
+SUNet: <ericx>
 
 Replace this with a description of the program.
 """
 import utils
 
 # Caesar Cipher
+ALPH = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+ALPH_LIST = []
+ALPH_LIST.extend(ALPH)
 
 def encrypt_caesar(plaintext):
     """Encrypt plaintext using a Caesar cipher.
 
-    Add more implementation details here.
+    Using a list containing cap alphabets for loopup. 
     """
-    raise NotImplementedError  # Your implementation here
+    result = ""
+    for letter in plaintext:
+        if letter in ALPH:
+            result += ALPH[(ALPH_LIST.index(letter) + 3) % 26]
+        else:
+            result += letter
+    return result
+
+
+
 
 
 def decrypt_caesar(ciphertext):
     """Decrypt a ciphertext using a Caesar cipher.
-
-    Add more implementation details here.
     """
-    raise NotImplementedError  # Your implementation here
+    result = ""
+    for letter in ciphertext:
+        if letter in ALPH:
+            result += ALPH[(ALPH_LIST.index(letter) - 3 + 26) % 26]
+        else:
+            result += letter
+    return result
+
 
 
 # Vigenere Cipher
